@@ -1,11 +1,36 @@
 with "config/labs_standalone_config.gpr";
+
 project Labs_Standalone is
 
-   for Source_Dirs use ("src/", "config/");
+   type Lab_T is ("Genericity_Text");
+   Lab : Lab_T := external ("Lab", "Genericity_Text");
+
+   type Mode_Type is ("Problem", "Solution");
+   Mode : Mode_Type := external ("Mode", "Problem");
+
+   Answer_Mode_Dir := "";
+   case Mode is
+      when "Problem" =>
+         Answer_Mode_Dir := "src";
+
+      when "Solution" =>
+         Answer_Mode_Dir := "answers";
+   end case;
+
+   Lab_Number := "";
+   Lab_Name := "";
+   case Lab is
+   when "Genericity_Text" =>
+      Lab_Number := "160";
+      Lab_Name := "genericity_text";
+   end case;
+   Lab_Source_Dir :=  "src/" & Lab_Number & "_" & Lab_Name & "/" & Answer_Mode_Dir;
+
+   for Source_Dirs use ("config/", Lab_Source_Dir);
    for Object_Dir use "obj/" & Labs_Standalone_Config.Build_Profile;
    for Create_Missing_Dirs use "True";
    for Exec_Dir use "bin";
-   for Main use ("labs_standalone.adb");
+   for Main use (Lab_Name & "_main");
 
    package Compiler is
       for Default_Switches ("Ada") use Labs_Standalone_Config.Ada_Compiler_Switches;

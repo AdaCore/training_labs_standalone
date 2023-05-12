@@ -1,9 +1,9 @@
 name = "labs_standalone"
-description = "Shiny new project"
+description = "Ada exercices for training"
 version = "0.1.0-dev"
 
 authors = ["Léo Germond"]
 maintainers = ["Léo Germond <germond@adacore.com>"]
 maintainers-logins = ["leogermond"]
 
-executables = ["labs_standalone"]
+executables = ["genericity_text_main"]
