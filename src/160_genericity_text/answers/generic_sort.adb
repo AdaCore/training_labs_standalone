@@ -4,7 +4,6 @@ with Generic_Swap;
 package body Generic_Sort is
 
    procedure Sort (List : in out List_Type) is
-
       Idx_Min : Integer;
       procedure Swap is new Generic_Swap.Swap (Data_Type => Element_Type);
    begin
