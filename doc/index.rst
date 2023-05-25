@@ -10,6 +10,8 @@ Welcome to Labs Standalone's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   160_genericity_text
+
 
 
 Indices and tables
